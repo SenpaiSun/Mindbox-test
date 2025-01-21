@@ -11,6 +11,7 @@ export const InputToDoList: React.FC<InputProps> = ({ data, addTask }) => {
       <Button
         miw={'90px'}
         w={'100px'}
+        disabled={!value}
         onClick={() => {
           addTask(data, value)
           setValue('')
