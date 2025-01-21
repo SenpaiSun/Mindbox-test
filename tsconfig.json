@@ -9,7 +9,6 @@
     "strict": true,
     "jsx": "react-jsx",
     "moduleResolution": "node",
-    "baseUrl": ".",
     "allowJs": true,
     "outDir": "./dist",
     "rootDir": "./src",
