@@ -40,7 +40,7 @@ export const ToDoList: React.FC = () => {
   }
 
   return (
-    <Flex direction={'column'} miw={'387px'} bd={'1px solid gray'} maw={'50%'} w={'100%'} p={'10px'} style={{ borderRadius: '10px' }} gap={'10px'} align={'center'}>
+    <Flex  direction={'column'} miw={'387px'} bd={'1px solid gray'} w={'100%'} p={'10px'} style={{ borderRadius: '10px'}} gap={'10px'} align={'center'}>
       <InputToDoList data={data} addTask={addTask} />
       <ContentToDoList changeStatusToDone={changeStatusToDone} data={data} />
     </Flex>

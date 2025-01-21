@@ -2,17 +2,17 @@ import { ActionIcon, Checkbox, Flex, Table, Text } from '@mantine/core'
 import React from 'react'
 import { CellProps } from '../types'
 
-export const ContentToDoList: React.FC<CellProps> = ({data, changeStatusToDone}) => {
+export const ContentToDoList: React.FC<CellProps> = ({ data, changeStatusToDone }) => {
   const [selectedRows, setSelectedRows] = React.useState<number[]>([])
 
   const rows = data.map((element) => (
-    <Table.Tr key={element.number} >
+    <Table.Tr key={element.number}>
       <Table.Td>
         {element.status === 'Pending' && <Checkbox aria-label='Select row' checked={selectedRows.includes(element.number)} onChange={(event) => setSelectedRows(event.currentTarget.checked ? [...selectedRows, element.number] : selectedRows.filter((number) => number !== element.number))} />}
       </Table.Td>
       <Table.Td>{element.number}</Table.Td>
       <Table.Td c={element.status === 'Pending' ? 'blue' : 'green'}>{element.date}</Table.Td>
-      <Table.Td style={{overflow: 'hidden', textOverflow: 'ellipsis'}} maw={'247px'} c={element.status === 'Pending' ? 'blue' : 'green'} td={element.status === 'Pending' ? 'none' : 'line-through'}>
+      <Table.Td style={{ overflow: 'hidden', textOverflow: 'ellipsis' }} maw={'247px'} c={element.status === 'Pending' ? 'blue' : 'green'} td={element.status === 'Pending' ? 'none' : 'line-through'}>
         {element.description}
       </Table.Td>
       <Table.Td c={element.status === 'Pending' ? 'blue' : 'green'}>{element.status}</Table.Td>
@@ -20,13 +20,21 @@ export const ContentToDoList: React.FC<CellProps> = ({data, changeStatusToDone})
   ))
 
   return (
-    <Flex w={'100%'} justify={'center'}>
+    <Flex w={'100%'} justify={'center'} style={{maxHeight: '70vh', overflow: 'auto' }}>
       {data.length ? (
-        <Table>
-          <Table.Thead>
+        <Table style={{ width: '100%', tableLayout: 'fixed' }}>
+          <Table.Thead pos={'sticky'} bg={'gray'} top={0}>
             <Table.Tr>
               <Table.Th>
-                <ActionIcon onClick={() => changeStatusToDone(selectedRows, data)} disabled={selectedRows.length ? false : true} size={'20px'} color='green'>
+                <ActionIcon
+                  onClick={() => {
+                    changeStatusToDone(selectedRows, data)
+                    setSelectedRows([])
+                  }}
+                  disabled={selectedRows.length ? false : true}
+                  size={'20px'}
+                  color='green'
+                >
                   &#10003;
                 </ActionIcon>
               </Table.Th>

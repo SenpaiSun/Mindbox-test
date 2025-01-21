@@ -6,7 +6,7 @@ export const Footer: React.FC = () => {
     <footer>
       <Flex m={'auto'} w={'90%'} h={'60px'} mt={'60px'} justify={'space-between'} align={'center'} style={{borderTop: '1px solid gray'}}>
         <Text c={'white'}>Special for Mindbox</Text>
-        <NavLink href='https://github.com/SenpaiSun/Mindbox-test' label='GitHub'  w={'max-content'}/>
+        <NavLink target='_blank' href='https://github.com/SenpaiSun/Mindbox-test' label='GitHub'  w={'max-content'}/>
       </Flex>
     </footer>
   )
