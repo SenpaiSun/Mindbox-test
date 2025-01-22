@@ -2,7 +2,7 @@ import { Button, CloseButton, Flex, Input } from '@mantine/core'
 import React from 'react'
 import { InputProps } from '../types'
 
-export const InputToDoList: React.FC<InputProps> = ({ data, addTask }) => {
+export const InputToDoList: React.FC<InputProps> = ({ addTask }) => {
   const [value, setValue] = React.useState<string>('')
 
   return (
@@ -13,7 +13,7 @@ export const InputToDoList: React.FC<InputProps> = ({ data, addTask }) => {
         w={'100px'}
         disabled={!value}
         onClick={() => {
-          addTask(data, value)
+          addTask(value)
           setValue('')
         }}
       >

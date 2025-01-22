@@ -3,10 +3,10 @@ import { InputToDoList } from './InputToDoList'
 import { MantineProvider } from '@mantine/core'
 
 test('add new task', () => {
-  const mockData = jest.fn()
+  const mockAddTask  = jest.fn()
   render(
     <MantineProvider>
-      <InputToDoList data={[]} addTask={mockData} />
+      <InputToDoList addTask={mockAddTask} />
     </MantineProvider>
   )
 
@@ -16,5 +16,5 @@ test('add new task', () => {
   const button = screen.getByText('Create')
   fireEvent.click(button)
 
-  expect(mockData).toHaveBeenCalledWith([], 'New task')
+  expect(mockAddTask).toHaveBeenCalledWith('New task')
 })

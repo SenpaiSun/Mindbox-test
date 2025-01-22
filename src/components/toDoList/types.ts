@@ -2,15 +2,18 @@ export interface TaskProps {
   number: number
   date: string
   description: string
-  status: string
+  status: 'Done' | 'Pending'
 }
 
 export interface CellProps {
   data: TaskProps[]
-  changeStatusToDone: (rows:number[], data:TaskProps[]) =>  void
+  selectedStatuses: string[]
+  handleStatusChange: (status: string) => void
+  deleteCompletedTasks: () => void
+  hasCompletedTasks: boolean
+  changeStatusToDone: (rows: number[]) => void
 }
 
 export interface InputProps {
-  data: TaskProps[]
-  addTask: (data:TaskProps[], description: string) => void
+  addTask: (description: string) => void
 }
