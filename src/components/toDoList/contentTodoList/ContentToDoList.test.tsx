@@ -8,6 +8,7 @@ test('complete and delete task', () => {
   const mockHandleStatusChange = jest.fn()
   const mockDeleteCompletedTasks = jest.fn()
 
+  // Создаем мок данных
   const task: TaskProps[] = [{ number: 1, date: '01.01.2025', description: 'Task 1', status: 'Pending' }]
   render(
     <MantineProvider>
@@ -15,16 +16,21 @@ test('complete and delete task', () => {
     </MantineProvider>
   )
 
- expect(screen.getByText('Task 1')).toBeInTheDocument();
+  // Проверяем, что задача отображается в таблице
+  expect(screen.getByText('Task 1')).toBeInTheDocument()
 
- const checkbox = screen.getByTestId('checkbox-1');
- fireEvent.click(checkbox);
+  // Ищем чек-бокс и нажимаем на него
+  const checkbox = screen.getByTestId('checkbox-1')
+  fireEvent.click(checkbox)
 
- const checkButton = screen.getByTestId('check-button');
- fireEvent.click(checkButton);
+  // Ищем кнопку выполнения задач и нажимаем на нее
+  const checkButton = screen.getByTestId('check-button')
+  fireEvent.click(checkButton)
 
- const deleteButton = screen.getByTestId('delete-button');
- fireEvent.click(deleteButton);
+  // Ищем кнопку удаления задач и нажимаем на нее
+  const deleteButton = screen.getByTestId('delete-button')
+  fireEvent.click(deleteButton)
 
- expect(mockChangeStatusToDone).toHaveBeenCalledWith([1]);
+  // Проверяем, что функция работает
+  expect(mockChangeStatusToDone).toHaveBeenCalledWith([1])
 })
