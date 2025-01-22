@@ -8,7 +8,7 @@
 - [Mantine](https://mantine.dev/)
 
 ## Инструкция по запуску:
-- Клонировать проект командой `git clone git@github.com:SenpaiSun/Mindbox-test.git`;
+- Клонировать проект командой `git clone https://github.com/SenpaiSun/Mindbox-test.git`;
 - Установить необходимые зависимости и запустить приложения командой(через Bash)  `npm i && npm run start`;
   
 ## Запуск теста:
