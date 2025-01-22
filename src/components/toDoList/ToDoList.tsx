@@ -23,6 +23,7 @@ export const ToDoList: React.FC = () => {
     localStorage.setItem('tasks', JSON.stringify(data));
   }, [data]);
 
+  // Функция для изменения статуса задач
   const changeStatusToDone = (rows: number[]) => {
     const updatedData = data.map((task) =>
       rows.includes(task.number) ? { ...task, status: 'Done' as const } : task
@@ -30,6 +31,7 @@ export const ToDoList: React.FC = () => {
     setData(updatedData);
   };
 
+  // Присваимаем новый номер
   const addTask = (description: string) => {
     let newNumber = data.length + 1;
 
@@ -37,7 +39,7 @@ export const ToDoList: React.FC = () => {
   while (data.some(task => task.number === newNumber)) {
     newNumber += 1;
   }
-
+  // Создаем новую задачу
   const newTask: TaskProps = {
     number: newNumber,
     date: new Date().toLocaleDateString(),
@@ -45,21 +47,25 @@ export const ToDoList: React.FC = () => {
     status: 'Pending',
   };
 
+  // Обновляем данные
   const updatedData = [...data, newTask];
   setData(updatedData);
   };
 
+  // Функция для обработки изменения статуса
   const handleStatusChange = (status: string) => {
     setSelectedStatuses((prev) =>
       prev.includes(status) ? prev.filter((s) => s !== status) : [...prev, status]
     );
   };
 
+  // Функция для удаления выполненных задач
   const deleteCompletedTasks = () => {
     const updatedTasks = data.filter((task) => task.status !== 'Done');
     setData(updatedTasks);
   };
 
+  // Проверяем наличие выполненных задач
   const hasCompletedTasks = data.some((task) => task.status === 'Done');
 
   return (
